@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Date and Time Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6d6ff; /* Soft violet background color */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #000000;
+        }
+
+        p {
+            color: #6A5ACD;
+            font-size: 18px;
+        }
+
+        .emoji {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Dynamic Date and Time Page</h1>
+        <p>Here's the current date and time:</p>
+        <div class="dynamic-content">
+            <span class="emoji">⏰</span>
+            <span class="dynamic-text">Loading...</span>
+        </div>
+    </div>
+
+    <script>
+        const dynamicTextElement = document.querySelector('.dynamic-text');
+
+function updateDynamicText() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour24: true };
+    const formattedDateTime = now.toLocaleString('en-UK', options);
+
+    dynamicTextElement.innerHTML = `
+        <span class="emoji">⏰</span>
+        <span>${formattedDateTime}</span>
+    `;
+}
+
+// Update dynamic content every second
+updateDynamicText(); // Call initially to prevent initial delay
+setInterval(updateDynamicText, 1000);
+
+    </script>
+</body>
+</html>
